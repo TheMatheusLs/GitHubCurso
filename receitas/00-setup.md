@@ -1,28 +1,59 @@
-Título: Iniciando o Git em uma nova máquina
-Cenário: Você está configurando o Git em uma nova máquina e precisa definir seu nome de usuário e email.
-Comando: 
+# Configuração Inicial e Produtividade
+
+Este guia cobre a configuração "fazer uma vez e esquecer" para preparar uma nova máquina para desenvolvimento profissional.
+
+## 1. Identidade do Desenvolvedor
+---
+
+**Cenário:**
+O Git precisa saber quem é o autor das mudanças para registrar no histórico. Sem isso, os commits ficam sem dono ou bloqueados.
+
+**Comandos:**
 ```bash
 git config --global user.name "Seu Nome"
 git config --global user.email "seu.email@exemplo.com"
 ```
-Explicação: Configura o nome de usuário e email globalmente para todos os repositórios Git no sistema.
 
+## 2. Modernização (Main Branch)
 ---
 
-Título: Definindo o padrão de ```main''' para novos respositórios
-Cenário: Você deseja que todos os novos repositórios Git criados tenham "main" como o branch padrão.
-Comando:
+**Cenário:**
+Antigamente, o branch principal se chamava master. O padrão moderno da indústria e do GitHub agora é main. É preciso alinhar sua máquina local para evitar conflitos de nomenclatura.
+
+**Comandos:**
 ```bash
 git config --global init.defaultBranch main
 ```
-Explicação: Define "main" como o nome padrão do branch inicial para novos repositórios Git.
 
+## 3. Kit de Produtividade (Aliases)
 ---
 
-Título: Criando um apelido para o Git log colorido e com formatação
-Cenário: Você quer facilitar a visualização do histórico de commits com cores e formatação
-Comando:
+**Problema:**
+Muitos comandos Git são longos e repetitivos. Usar aliases (apelidos) pode acelerar o fluxo de trabalho.
+
+**Soluções:**
+Criar "apelidos" (aliases) mnemônicos para os comandos mais usados.
+
+**Configuração (Executar uma vez no terminal):**
 ```bash
+# 's' -> status (Visualizar o estado do palco/arquivos)
+git config --global alias.s status
+
+# 'co' -> checkout (Trocar de branch ou recuperar arquivos)
+git config --global alias.co checkout
+
+# 'br' -> branch (Listar, criar ou deletar ramificações)
+git config --global alias.br branch
+
+# 'cm' -> commit message (Commitar rápido com mensagem)
+git config --global alias.cm "commit -m"
+
+# 'lg' -> Log Visual (O "Grafo do Metrô")
+# Mostra histórico colorido, resumido e com linhas de conexão
 git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
 ```
-Explicação: Cria um alias "lg" para um comando de log formatado e colorido, facilitando a leitura do histórico de commits.
+
+**Como usar no dia a dia:**
+- Em vez de `git status`, use: `git s`
+- Em vez de `git commit -m "msg"`, use: `git cm "msg"`
+- Em vez de `git log ...`, use: `git lg`
