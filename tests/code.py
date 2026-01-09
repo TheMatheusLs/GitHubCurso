@@ -1,4 +1,6 @@
+import math
+
 def calcular():
-    print("Cálculo Simples: 2 + 2 = 4")
+    print(f"Cálculo Complexo: Raiz de 25 é {math.sqrt(25)}")
 
 calcular()
