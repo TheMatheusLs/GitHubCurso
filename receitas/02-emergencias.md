@@ -44,4 +44,23 @@ git checkout nome-do-arquivo
 # ou (versão moderna)
 git restore nome-do-arquivo
 ```
+
+---
+
+## 3. Corrigindo Commits (A Máquina do Tempo)
+
+### Caso 1: Errei a mensagem ou esqueci um arquivo (Amend)
+Altera o **último** commit feito.
+1. Adicione o arquivo esquecido (opcional): `git add .`
+2. Reescreva o commit:
+   ```bash
+   git commit --amend -m "Nova mensagem correta aqui"
+   ```
+
+### Caso 2: Quero desfazer o commit, mas manter o código (Soft Reset)
+Útil quando você commita algo incompleto por engano. O commit desaparece do histórico, mas seus arquivos continuam na área de preparação (Verdes/Staged) prontos para serem editados.
+```bash
+git reset --soft HEAD~1
+```
+*Explicação: `HEAD~1` significa "volte 1 passo para trás no histórico".*
 ```
